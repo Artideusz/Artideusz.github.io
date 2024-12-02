@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en-us">
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <title>Hugo Journey 00 // My New Hugo Site</title>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta charset="utf-8" />
+    <meta name="generator" content="Hugo 0.139.3">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="John Doe" />
+    <meta name="description" content="" />
+    <link rel="stylesheet" href="/css/main.min.5b1fcc8902588589c4767187402a3c29f8b8d7a6fdef6d9f8f77045bb0d14fee.css" />
+    
+
+    
+    
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hugo Journey 00">
+  <meta name="twitter:description" content="What is Hugo? Hugo is a static site generator written in Go. It provides a very easy way to create static sites.
+Installing hugo Hugo is available as an official package in the arch repository. It can be installed via:
+sudo pacman -S hugo After that is installed, you can generate a new site using the following command:
+hugo new site &lt;site_name&gt; This should generate a new folder with the contents of the site.">
+
+    <meta property="og:url" content="http://localhost:1313/posts/hugo-journey-00/">
+  <meta property="og:site_name" content="My New Hugo Site">
+  <meta property="og:title" content="Hugo Journey 00">
+  <meta property="og:description" content="What is Hugo? Hugo is a static site generator written in Go. It provides a very easy way to create static sites.
+Installing hugo Hugo is available as an official package in the arch repository. It can be installed via:
+sudo pacman -S hugo After that is installed, you can generate a new site using the following command:
+hugo new site &lt;site_name&gt; This should generate a new folder with the contents of the site.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2024-12-02T20:57:47+01:00">
+    <meta property="article:modified_time" content="2024-12-02T20:57:47+01:00">
+
+
+  </head>
+  <body>
+    <header class="app-header">
+      <a href="http://localhost:1313/"><img class="app-header-avatar" src="/avatar.jpg" alt="John Doe" /></a>
+      <span class="app-header-title">My New Hugo Site</span>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vehicula turpis sit amet elit pretium.</p>
+    </header>
+    <main class="app-container">
+      
+  <article class="post">
+    <header class="post-header">
+      <h1 class ="post-title">Hugo Journey 00</h1>
+      <div class="post-meta">
+        <div>
+          <svg class="icon icon-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>calendar</title><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          Dec 2, 2024
+        </div>
+        <div>
+          <svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          2 min read
+        </div>
+      </div>
+    </header>
+    <div class="post-content">
+      <h1 id="what-is-hugo">What is Hugo?</h1>
+<p>Hugo is a static site generator written in Go. It provides a very easy way to create static sites.</p>
+<h2 id="installing-hugo">Installing hugo</h2>
+<p>Hugo is available as an official package in the <a href="https://archlinux.org/packages/extra/x86_64/hugo/">arch repository</a>. It can be installed via:</p>
+<pre tabindex="0"><code>sudo pacman -S hugo
+</code></pre><p>After that is installed, you can generate a new site using the following command:</p>
+<pre tabindex="0"><code>hugo new site &lt;site_name&gt;
+</code></pre><p>This should generate a new folder with the contents of the site.</p>
+<h2 id="importing-a-theme-for-your-site">Importing a theme for your site</h2>
+<p>I used the <a href="https://themes.gohugo.io/themes/hugo-theme-m10c/">m10c</a> theme created by <a href="https://vaga.io/">Vaga</a> for this blog. I imported it by running the following command in the root site directory:</p>
+<pre tabindex="0"><code>git submodule add https://github.com/&lt;author&gt;/&lt;theme&gt;.git themes/&lt;theme&gt;
+</code></pre><p>This will import the theme contents to your site.</p>
+<p>To use it, go to <code>hugo.toml</code> and add the following entry:</p>
+<pre tabindex="0"><code>theme = &#39;&lt;theme&gt;&#39;
+</code></pre><p>That&rsquo;s all!</p>
+<h2 id="creating-a-new-post">Creating a new post</h2>
+<p>You can create a new post using the following command:</p>
+<pre tabindex="0"><code>hugo new content content/posts/&lt;post_name&gt;.md
+</code></pre><p>This will create a new file with hugo variables setup for you:</p>
+<pre tabindex="0"><code>+++
+date = &#39;2024-12-02T20:57:47+01:00&#39;
+draft = true
+title = &#39;&lt;post_name&gt;&#39;
++++
+</code></pre><p>The area between the plus signs is called the <a href="https://gohugo.io/content-management/front-matter/">Front matter</a>, and it is metadata that basically integrates your content with the functionality of Hugo. It describes:</p>
+<ul>
+<li>The date of a post.</li>
+<li>The display title of the post.</li>
+<li>The summary for the post.</li>
+<li>Custom fields using <a href="https://gohugo.io/content-management/front-matter/#parameters">parameters</a>.</li>
+<li>And many other fields.</li>
+</ul>
+<h2 id="combining-hugo-with-github-pages">Combining Hugo with Github Pages</h2>
+<p>I mainly followed the steps provided by <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">hugo</a>, which are the following:</p>
+<ol>
+<li>Create a new repository on Github.</li>
+<li>Import the Hugo repository to Github. You can do this by invoking the following commands:
+<ul>
+<li><code>git init .</code></li>
+<li>``</li>
+</ul>
+</li>
+</ol>
+<h2 id="resource-links">Resource links</h2>
+<ul>
+<li><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">https://gohugo.io/hosting-and-deployment/hosting-on-github/</a></li>
+<li><a href="https://gohugo.io/content-management/front-matter/">https://gohugo.io/content-management/front-matter/</a></li>
+</ul>
+
+    </div>
+    <div class="post-footer">
+      
+    </div>
+  </article>
+
+    </main>
+  </body>
+</html>

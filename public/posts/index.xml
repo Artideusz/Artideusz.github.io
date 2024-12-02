@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on My New Hugo Site</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 02 Dec 2024 20:57:47 +0100</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo Journey 00</title>
+      <link>http://localhost:1313/posts/hugo-journey-00/</link>
+      <pubDate>Mon, 02 Dec 2024 20:57:47 +0100</pubDate>
+      <guid>http://localhost:1313/posts/hugo-journey-00/</guid>
+      <description>&lt;h1 id=&#34;what-is-hugo&#34;&gt;What is Hugo?&lt;/h1&gt;&#xA;&lt;p&gt;Hugo is a static site generator written in Go. It provides a very easy way to create static sites.&lt;/p&gt;&#xA;&lt;h2 id=&#34;installing-hugo&#34;&gt;Installing hugo&lt;/h2&gt;&#xA;&lt;p&gt;Hugo is available as an official package in the &lt;a href=&#34;https://archlinux.org/packages/extra/x86_64/hugo/&#34;&gt;arch repository&lt;/a&gt;. It can be installed via:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;sudo pacman -S hugo&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After that is installed, you can generate a new site using the following command:&lt;/p&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;hugo new site &amp;lt;site_name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This should generate a new folder with the contents of the site.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
