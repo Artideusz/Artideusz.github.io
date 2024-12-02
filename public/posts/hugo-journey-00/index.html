@@ -53,7 +53,7 @@ hugo new site &lt;site_name&gt; This should generate a new folder with the conte
         </div>
         <div>
           <svg class="icon icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><title>clock</title><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-          2 min read
+          3 min read
         </div>
       </div>
     </header>
@@ -93,14 +93,105 @@ title = &#39;&lt;post_name&gt;&#39;
 <h2 id="combining-hugo-with-github-pages">Combining Hugo with Github Pages</h2>
 <p>I mainly followed the steps provided by <a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">hugo</a>, which are the following:</p>
 <ol>
-<li>Create a new repository on Github.</li>
+<li>Create a new repository on Github.
+<ul>
+<li>Name the repository <code>&lt;github username&gt;.github.io</code></li>
+</ul>
+</li>
 <li>Import the Hugo repository to Github. You can do this by invoking the following commands:
 <ul>
 <li><code>git init .</code></li>
-<li>``</li>
+<li><code>git add .</code></li>
+<li><code>git commit -m &quot;Initial commit&quot;</code></li>
+<li><code>git remote add origin git@github.com:&lt;Author&gt;/&lt;new repository&gt;.git</code></li>
+<li><code>git push -u origin master</code></li>
 </ul>
 </li>
+<li>In the github repository, go to <code>Settings &gt; Pages &gt; Source</code> and change <code>Deploy from a branch</code> to <code>Github Actions</code>.</li>
+<li>Create a new file: <code>.github/workflows/hugo.yml</code>. If you do not have the folders, create them.</li>
+<li>Paste the following configuration:</li>
 </ol>
+<pre tabindex="0"><code>name: Deploy Hugo site to Pages
+
+on:
+  push:
+    branches:
+      - master
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: &#34;pages&#34;
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      HUGO_VERSION: 0.137.1
+    steps:
+      - name: Install Hugo CLI
+        run: |
+          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_linux-amd64.deb \
+          &amp;&amp; sudo dpkg -i ${{ runner.temp }}/hugo.deb          
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Install Node.js dependencies
+        run: &#34;[[ -f package-lock.json || -f npm-shrinkwrap.json ]] &amp;&amp; npm ci || true&#34;
+      - name: Build with Hugo
+        env:
+          HUGO_CACHEDIR: ${{ runner.temp }}/hugo_cache
+          HUGO_ENVIRONMENT: production
+          TZ: America/Los_Angeles
+        run: |
+          hugo \
+            --gc \
+            --minify \
+            --baseURL &#34;${{ steps.pages.outputs.base_url }}/&#34;          
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+</code></pre><ol start="6">
+<li>Push the change to Github.
+<ul>
+<li><code>git add .</code></li>
+<li><code>git commit -m &quot;Added workflow&quot;</code></li>
+<li><code>git push</code></li>
+</ul>
+</li>
+<li>Wait until the workflow finishes running.</li>
+<li>Verify if the page is live by going to the following page: <code>https://&lt;username&gt;.github.io</code>.</li>
+</ol>
+<p>And that&rsquo;s all! You should now have your own blog set up and running on Github Pages!</p>
 <h2 id="resource-links">Resource links</h2>
 <ul>
 <li><a href="https://gohugo.io/hosting-and-deployment/hosting-on-github/">https://gohugo.io/hosting-and-deployment/hosting-on-github/</a></li>
