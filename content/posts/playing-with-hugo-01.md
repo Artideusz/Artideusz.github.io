@@ -1,14 +1,16 @@
 +++
 date = '2024-12-02T20:57:47+01:00'
 draft = false
-title = 'Hugo Journey - Part 1'
+title = 'Playing with Hugo - Part 1'
+menus = 'main'
+tags  = ['miscellaneous']
 +++
 
 # What is Hugo?
 
-Hugo is a static site generator written in Go. It provides a very easy way to create static sites. 
+Hugo is a static site generator written in Go. It provides a very easy way to create static sites. It has good and painless integration with Github Pages.
 
-## Installing hugo
+# Installing hugo
 
 Hugo is available as an official package in the [arch repository](https://archlinux.org/packages/extra/x86_64/hugo/). It can be installed via:
 
@@ -24,7 +26,7 @@ hugo new site <site_name>
 
 This should generate a new folder with the contents of the site.
 
-## Importing a theme for your site
+# Importing a theme for your site
 
 I used the [m10c](https://themes.gohugo.io/themes/hugo-theme-m10c/) theme created by [Vaga](https://vaga.io/) for this blog. I imported it by running the following command in the root site directory:
 
@@ -42,7 +44,7 @@ theme = '<theme>'
 
 That's all!
 
-## Creating a new post
+# Creating a new post
 
 You can create a new post using the following command:
 
@@ -68,7 +70,7 @@ The area between the plus signs is called the [Front matter](https://gohugo.io/c
 - Custom fields using [parameters](https://gohugo.io/content-management/front-matter/#parameters).
 - And many other fields.
 
-## Combining Hugo with Github Pages
+# Combining Hugo with Github Pages
 
 I mainly followed the steps provided by [hugo](https://gohugo.io/hosting-and-deployment/hosting-on-github/), which are the following:
 
@@ -165,7 +167,47 @@ jobs:
 
 And that's all! You should now have your own blog set up and running on Github Pages!
 
+# Modifying the content of the hugo site
+
+When using an imported theme, you may want to modify some aspects of the theme, such as:
+
+- Colors.
+- The page title.
+- Other information related to the site itself.
+
+Usually, imported themes provide a way to change the properties of the site by populating pre-built or custom field in the `hugo.toml` file. For example:
+
+You can change the color of your theme by appending the following content to your theme (assuming you use the `m10c` theme):
+
+```
+[params.style]
+  darkestColor = "#0f0f0f"
+  darkColor = "#212121"
+  lightColor = "#eeeeee"
+  lightestColor = "#22dd22"
+  primaryColor = "#00aa00"
+```
+
+You can find more information about configuration options [here](https://gohugo.io/getting-started/configuration/#all-configuration-settings), in the theme documentation or in the theme source code.
+
+## Menus
+
+You can also add menus by adding the `menus` attribute in a post. For example:
+
+```
++++
+date = '2024-12-02T20:57:47+01:00'
+draft = false
+title = 'Playing with Hugo - Part 1'
+menus = 'main'
++++
+```
+
+More in the next part!
+
 ## Resource links
 
 - https://gohugo.io/hosting-and-deployment/hosting-on-github/
 - https://gohugo.io/content-management/front-matter/
+- https://gohugo.io/getting-started/configuration/#all-configuration-settings
+- https://gohugo.io/content-management/menus/

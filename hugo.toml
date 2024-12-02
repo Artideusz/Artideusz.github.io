@@ -1,4 +1,23 @@
-baseURL = 'https://example.org/'
+baseURL = 'https://Artideusz.github.io'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'DATA$ BANK'
 theme = 'hugo-theme-m10c'
+
+[params.style]
+  darkestColor = "#0f0f0f"
+  darkColor = "#212121"
+  lightColor = "#eeeeee"
+  lightestColor = "#22dd22"
+  primaryColor = "#00aa00"
+
+[params]
+  avatar = "https://avatars.githubusercontent.com/u/51860316"
+  author = "Artideusz"
+  description = "A list write-ups and information I discovered/learned - for you to enjoy!"
+  menu_item_separator = "<br>"
+
+[[menu.main]]
+  identifier = "tags"
+  name = "Tags"
+  url = "/tags/"
+  
