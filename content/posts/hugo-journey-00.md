@@ -1,7 +1,7 @@
 +++
 date = '2024-12-02T20:57:47+01:00'
-draft = true
-title = 'Hugo Journey 00'
+draft = false
+title = 'Hugo Journey - Part 1'
 +++
 
 # What is Hugo?
